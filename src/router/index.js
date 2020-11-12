@@ -5,7 +5,7 @@ Vue.use(vueRouter)
 // 通过es提案的import()实现懒加载，指定相同webpackChunkName的组件会被打包到同一js文件中
 const Index = () => import( /*webpackChunkName: 'ImportFuncDemo',*/ "@/components/index");
 
-console.log(process.env);
+// console.log(process.env);
 const Router = new vueRouter({
   routes: [{
     path: '/',
