@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /* ---------- init ---------- */
+*,
+*:before,
+*:after,
 body,
 div,
 dl,
@@ -39,8 +42,9 @@ hgroup,
 menu,
 nav,
 section {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 article,
@@ -63,9 +67,8 @@ button,
 input,
 select,
 textarea {
-  font-family: Microsoft YaHei, "瀹嬩綋", Tahoma, arial;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
-  color: #333;
 }
 
 th {
@@ -112,7 +115,7 @@ a {
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   text-decoration: none;
 }
 

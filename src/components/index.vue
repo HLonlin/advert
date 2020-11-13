@@ -22,7 +22,7 @@
         <div class="slider__control-line"></div>
         <div class="slider__control-line"></div>
       </div>
-      <div class="slider__control slider__control--right" @click="controlClickHandler($event,true)">
+      <div class="slider__control--right" @click="controlClickHandler($event,true)">
         <div class="slider__control-line"></div>
         <div class="slider__control-line"></div>
       </div>
@@ -37,7 +37,7 @@
       return {
         slidingBlocked: false, // 阻止滑动
         numOfSlides: 0,
-        slidingAT: 1300, // 动画时长 与scss变量同步
+        slidingAT: 1000, // 动画时长 与scss变量同步
         imageArr: [{
             coverImgUrl: "https://img.zcool.cn/community/01a4775fa920b511013ee04d67653c.jpg@1280w_1l_2o_100sh.jpg",
             baseImg: "../assets/site/img/1.jpg",
@@ -67,14 +67,13 @@
             baseImg: "../assets/site/img/5.jpg",
             heading: "Check my other stuff!",
             text: "Other demos"
+          },
+          {
+            coverImgUrl: "https://img.zcool.cn/community/0118be5fa920b611013fdcc767d548.jpg@1280w_1l_2o_100sh.jpg",
+            baseImg: "../assets/site/img/6.jpg",
+            heading: "Limited browser support",
+            text: "Forget about IE/Edge and FF"
           }
-          // ,
-          // {
-          //   coverImgUrl: "https://img.zcool.cn/community/0118be5fa920b611013fdcc767d548.jpg@1280w_1l_2o_100sh.jpg",
-          //   baseImg: "../assets/site/img/6.jpg",
-          //   heading: "Limited browser support",
-          //   text: "Forget about IE/Edge and FF"
-          // }
         ]
       };
     },
@@ -154,26 +153,17 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+<style scoped>
 
-  body {
-    overflow: hidden;
-    font-family: Helvetica, Arial, sans-serif;
-  }
+</style>
+<style scoped lang="scss">
 
   .index {
     overflow: hidden;
   }
 
-  $numOfSlides: 5;
-  $slidingAT: 1.3s;
+  $numOfSlides: 6;
+  $slidingAT: 1s;
   $controlSize: 60px;
 
   .slider {
@@ -190,18 +180,29 @@
       z-index: 2;
       position: absolute;
       top: 50%;
-      left: 5%;
-      width: $controlSize;
-      height: $controlSize;
-      margin-left: $controlSize/-2;
-      margin-top: $controlSize/-2;
+      left: 2rem;
+      width: 3.75rem;
+      height: 3.75rem;
+      margin-left: -1.875rem;
+      margin-top: -1.875rem;
       border-radius: 50%;
       background: #fff;
       transition: background-color 0.3s;
       cursor: pointer;
 
       &--right {
-        left: 95%;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        width: 3.75rem;
+        height: 3.75rem;
+        margin-right: -1.875rem;
+        margin-top: -1.875rem;
+        border-radius: 50%;
+        background: #fff;
+        transition: background-color 0.3s;
+        cursor: pointer;
       }
 
       &:hover {

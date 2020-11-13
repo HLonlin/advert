@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import './assets/site/css/base.css';
+import "./assets/site/css/base.css";
 
 // 生产环境下不启动提示消息
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
