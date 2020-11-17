@@ -51,7 +51,8 @@
         let that = this;
         that.$axios.get(that.$api.adList, {
           params: {
-            'device': '广告屏'
+            'device': '广告屏',
+            'pageSize': 50
           }
         }).then(res => {
           if (res.status == 200) {
