@@ -1,6 +1,7 @@
 # default_project
 
 > 广告投放模块
+内具备基于clip-path的轮播效果，不依赖插件。原生‘纵享丝滑’
 
 ## Build Setup
 
