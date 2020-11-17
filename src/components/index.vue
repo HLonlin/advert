@@ -54,11 +54,18 @@
             'device': '广告屏'
           }
         }).then(res => {
-          for (let i = 0, imax = res.data.length; i < imax; i++) {
-            res.data[i].autoPlayTime = 800;
-            that.$set(that.adlist, i, res.data[i]);
+          if (res.status == 200) {
+            let data = res.data;
+            that.$axios.get(that.$api.imageShowTime).then(res => {
+              if (res.status == 200) {
+                for (let i = 0, imax = data.length; i < imax; i++) {
+                  data[i].autoPlayTime = Number(res.data.time) * 1000;
+                  that.$set(that.adlist, i, data[i]);
+                }
+                that.silder();
+              }
+            });
           }
-          that.silder();
         });
       },
       silder() {
