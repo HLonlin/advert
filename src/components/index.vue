@@ -7,10 +7,6 @@
           :data-type='item.linkType'>
           <div v-if="item.linkType==='image'" class="slide__inner" :style="{backgroundImage: 'url(' + item.imgUrl + ')' }">
             <div class="slide__content__box">
-              <!-- <div class="slide__content">
-                <h2 class="slide__heading">{{item.heading}}</h2>
-                <p class="slide__text">{{item.text}}</p>
-              </div> -->
             </div>
           </div>
           <div v-else-if="item.linkType==='video'" class="slide__inner">
@@ -23,14 +19,6 @@
         </div>
       </div>
       <!-- slides end -->
-      <!-- <div class="slider__control slider__control--left" @click="controlClickHandler($event,false)">
-        <div class="slider__control-line"></div>
-        <div class="slider__control-line"></div>
-      </div>
-      <div class="slider__control slider__control--right" @click="controlClickHandler($event,true)">
-        <div class="slider__control-line"></div>
-        <div class="slider__control-line"></div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -66,61 +54,8 @@
             'device': '广告屏'
           }
         }).then(res => {
-          // let testArr = [];
-          // for (let i = 0, imax = 6; i < imax; i++) {
-          //   let testItem = {
-          //     "indexNum": i,
-          //     "endDate": "2020-11-06 18:57:21",
-          //     "createTimeStamp": "",
-          //     "creatorId": i,
-          //     "creatorName": "系统管理员",
-          //     "url": "@/assets/video/TXbgAgfaokkA.mp4",
-          //     "imgUrl": "@/assets/img/" + (i + 1) + ".jpg",
-          //     "createTime": "16:40:55",
-          //     "name": "广告",
-          //     "linkType": "image",
-          //     "id": i,
-          //     "device": "设备",
-          //     "startDate": "2020-11-06 18:57:20",
-          //     "createDate": "2020-11-06",
-          //     "status": 0,
-          //     "autoPlayTime": 800
-          //   };
-          //   switch (i) {
-          //     case 0:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/0199ff5fb23adc11013fdcc76ab3ff.jpg@3000w_1l_0o_100sh.jpg";
-          //       break;
-          //     case 1:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/01adc55fb2372711013fdcc7eb1456.jpg@1280w_1l_2o_100sh.jpg";
-          //       break;
-          //     case 2:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/01def95fb2373611013ee04d46772d.jpg@1280w_1l_2o_100sh.jpg";
-          //       break;
-          //     case 3:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/0157bd5fb21d8111013ee04db4cd84.jpg@1280w_1l_2o_100sh.jpg";
-          //       break;
-          //     case 4:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/0141ba5fb21d8111013fdcc799a838.jpg@1280w_1l_2o_100sh.jpg";
-          //       break;
-          //     case 5:
-          //       testItem.imgUrl =
-          //         "https://img.zcool.cn/community/01bfc15fb21ca211013ee04d17bf5d.jpg@1280w_1l_2o_100sh.jpg";
-          //       testItem.linkType = 'video';
-          //       testItem.url =
-          //         "https://1252326633.vod2.myqcloud.com/4d86cec3vodcq1252326633/1d04542e5285890809824326316/TXbgAgfaokkA.mp4"
-          //       break;
-          //   }
-          //   testArr.push(testItem);
-          //   res.data = testArr;
-          // }
-
-          console.log('Handle the success event:', res.data);
           for (let i = 0, imax = res.data.length; i < imax; i++) {
+            res.data[i].autoPlayTime = 800;
             that.$set(that.adlist, i, res.data[i]);
           }
           that.silder();
@@ -140,28 +75,6 @@
           that.autoPlaySilder();
         });
       },
-      // controlClickHandler(event, isRight) { //点击翻页
-      //   let that = this;
-      //   if (that.slidingBlocked) return;
-      //   that.slidingBlocked = true;
-      //   let $control = event.target;
-      //   let $curActive = document.querySelector('.slide.s--active');
-      //   let index = $curActive.dataset.slide;
-
-      //   (isRight) ? index++ : index--;
-      //   if (index < 1) index = that.numOfSlides;
-      //   if (index > that.numOfSlides) index = 1;
-      //   let $newActive = document.querySelector('.slide-' + index);
-
-      //   $control.classList.add('a--rotation');
-      //   $curActive.classList.remove('s--active');
-      //   $newActive.classList.add('s--active');
-
-      //   setTimeout(function() {
-      //     $control.classList.remove('a--rotation');
-      //     that.slidingBlocked = false;
-      //   }, that.slidingAT);
-      // },
       autoPlaySilder() { //自动轮播
         let that = this;
         if (that.slidingBlocked || that.adlist.length <= 0) return;
@@ -319,16 +232,6 @@
     transition: clip-path 0.6s ease;
     clip-path: circle(100vmax at 50% 50%);
   }
-
-  /*  .slide.s--prev {
-    transition: clip-path 0s ease 0.8s;
-    clip-path: circle(0px at 50px 50%);
-  }
-
-  .slide.s--active.s--active-prev {
-    transition: clip-path 0.8s ease;
-    clip-path: circle(120vmax at 50% 50%);
-  } */
 
   .slide__inner {
     position: absolute;
