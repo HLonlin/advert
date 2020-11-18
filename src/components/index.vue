@@ -11,7 +11,7 @@
           </div>
           <div v-else-if="item.linkType==='video'" class="slide__inner">
             <div class="slide__content__box">
-              <video muted controls class="slide__inner--video" :src="item.url">
+              <video controls class="slide__inner--video" :src="item.url">
                 您的浏览器不支持播放此视频。
               </video>
             </div>
@@ -104,16 +104,29 @@
           }, that.autoPlayTime);
         } else if ($curAd.linkType === "video") {
           let videoer = $curActive.children[0].children[0].children[0];
-          videoer.play();
-          videoer.addEventListener('ended', function() { //结束
-            index++;
-            if (index > that.numOfSlides) index = 1;
-            let $newActive = document.querySelector('.slide-' + index);
-            $curActive.classList.remove('s--active');
-            $newActive.classList.add('s--active');
-            that.slidingBlocked = false;
-            that.autoPlaySilder();
-          }, false);
+          let videoPlay = videoer.play();
+          function playVideo() {
+            videoer.play();
+            videoer.addEventListener('ended', function() { //结束
+              index++;
+              if (index > that.numOfSlides) index = 1;
+              let $newActive = document.querySelector('.slide-' + index);
+              $curActive.classList.remove('s--active');
+              $newActive.classList.add('s--active');
+              that.slidingBlocked = false;
+              that.autoPlaySilder();
+            }, false);
+          }
+          videoPlay.then(() => { // 对不能自动播放的情况进行处理
+            playVideo();
+          }).catch((err) => {
+            console.log("不允许自动播放:", err);
+            //视频元素可以选择静音后再播放,提示用户打开声音
+            videoer.muted = true;
+            playVideo();
+          });
+
+
         }
       }
     },
