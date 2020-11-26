@@ -6,7 +6,9 @@ const HOSTURL = process.env.NODE_ENV === 'development' ? 'https://smartmarket-op
 // protocol + "//" + host + ":" + port;
 const API = {
   host: HOSTURL,
-  adList: "/api/ad/adManage/list", // 广告列表
-  imageShowTime:"/api/ad/adManage/adImageShowTime", //图片展示时长
+  // adList: "/api/ad/adManage/list", // 广告列表
+  // imageShowTime:"/api/ad/adManage/adImageShowTime", //图片展示时长
+  adList: "/api/market/marketManage/list", // 广告列表
+  imageShowTime:"/api/market/marketManage/adImageShowTime", //图片展示时长
 };
 export default API;
