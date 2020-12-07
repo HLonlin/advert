@@ -28,6 +28,7 @@
     name: "index",
     data() {
       return {
+        fullScreen:"100vh",
         adlist: [],
         slidingBlocked: false,
         numOfSlides: 0,
@@ -36,11 +37,17 @@
     },
     beforeCreate() {},
     created() {
+      this.fullScreen=window.innerHeight+"px";
       this.getAdlist();
     },
     beforeMount() {},
     mounted() {
-      this.silder()
+      this.silder();
+      document.getElementsByClassName('slider')[0].style.height=this.fullScreen;
+      window.onresize=function(){
+        this.fullScreen=window.innerHeight+"px";
+        document.getElementsByClassName('slider')[0].style.height=this.fullScreen;
+      }
     },
     beforeUpdate() {},
     updated() {},
